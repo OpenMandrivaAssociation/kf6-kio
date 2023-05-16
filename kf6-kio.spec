@@ -33,6 +33,7 @@ BuildRequires: cmake(KF6Bookmarks)
 BuildRequires: cmake(KF6JobWidgets)
 BuildRequires: cmake(KF6Auth)
 BuildRequires: cmake(KF6TextWidgets)
+BuildRequires: cmake(KF6Service)
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -134,7 +135,7 @@ Network transparent access to files and data
 %{_datadir}/kconf_update/filepicker.upd
 %{_datadir}/kf6/kcookiejar/domain_info
 %{_datadir}/knotifications6/proxyscout.notifyrc
-%{_mandir}/man8/kcookiejar5.8.zst
+%{_mandir}/man8/kcookiejar5.8*
 
 %files -n %{devname}
 %{_includedir}/KF6/KIO
