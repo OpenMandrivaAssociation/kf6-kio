@@ -34,6 +34,8 @@ BuildRequires: cmake(KF6JobWidgets)
 BuildRequires: cmake(KF6Auth)
 BuildRequires: cmake(KF6TextWidgets)
 BuildRequires: cmake(KF6Service)
+BuildRequires: cmake(KF6DocTools)
+BuildRequires: cmake(KF6DBusAddons)
 Requires: %{libname} = %{EVRD}
 
 %description
