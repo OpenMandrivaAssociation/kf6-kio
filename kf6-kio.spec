@@ -37,6 +37,7 @@ BuildRequires: cmake(KF6Service)
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: cmake(KF6DBusAddons)
 BuildRequires: cmake(KF6Completion)
+BuildRequires: cmake(KF6WindowSystem)
 Requires: %{libname} = %{EVRD}
 
 %description
