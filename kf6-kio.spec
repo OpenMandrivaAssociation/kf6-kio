@@ -41,7 +41,14 @@ BuildRequires: cmake(KF6DBusAddons)
 BuildRequires: cmake(KF6Completion)
 BuildRequires: cmake(KF6WindowSystem)
 BuildRequires: cmake(KF6KDED)
+BuildRequires: cmake(KF6Wallet)
+BuildRequires: cmake(KF6Notifications)
 BuildRequires: pkgconfig(mount)
+BuildRequires: pkgconfig(libacl)
+BuildRequires: pkgconfig(zlib)
+BuildRequires: pkgconfig(libxml-2.0)
+BuildRequires: pkgconfig(libxslt)
+BuildRequires: pkgconfig(krb5)
 Requires: %{libname} = %{EVRD}
 
 %description
