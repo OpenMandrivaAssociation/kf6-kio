@@ -41,6 +41,7 @@ BuildRequires: cmake(KF6DBusAddons)
 BuildRequires: cmake(KF6Completion)
 BuildRequires: cmake(KF6WindowSystem)
 BuildRequires: cmake(KF6KDED)
+BuildRequires: pkgconfig(mount)
 Requires: %{libname} = %{EVRD}
 
 %description
