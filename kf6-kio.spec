@@ -84,10 +84,16 @@ Network transparent access to files and data
 
 %prep
 %autosetup -p1 -n kio-%{?git:master}%{!?git:%{version}}
+# Disabling PCH on aarch64 is a workaround for an apparent clang 16.0.3 bug
+# at compile time:
+#	error: is pie differs in PCH file vs. current file
 %cmake \
 	-DBUILD_QCH:BOOL=ON \
 	-DBUILD_WITH_QT6:BOOL=ON \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
+%ifarch %{aarch64}
+	-DENABLE_PCH:BOOL=OFF \
+%endif
 	-G Ninja
 
 %build
