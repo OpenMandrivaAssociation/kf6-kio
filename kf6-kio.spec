@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230513
+%define git 20230525
 
 Name: kf6-kio
 Version: 5.240.0
@@ -145,10 +145,6 @@ Network transparent access to files and data
 %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
 %{_datadir}/applications/kcm_trash.desktop
 %{_datadir}/applications/ktelnetservice6.desktop
-%{_datadir}/dbus-1/interfaces/kf5_org.kde.KCookieServer.xml
-%{_datadir}/dbus-1/interfaces/kf5_org.kde.KDirNotify.xml
-%{_datadir}/dbus-1/interfaces/kf5_org.kde.KPasswdServer.xml
-%{_datadir}/dbus-1/interfaces/kf5_org.kde.kio.FileUndoManager.xml
 %{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kiod5.service
 %{_datadir}/dbus-1/services/org.kde.kioexecd.service
@@ -171,7 +167,6 @@ Network transparent access to files and data
 %{_qtdir}/mkspecs/modules/qt_KIOGui.pri
 %{_qtdir}/mkspecs/modules/qt_KIOWidgets.pri
 %{_qtdir}/doc/KF6KIO.*
-%{_datadir}/kdevappwizard/templates/kioworker.tar.bz2
 
 %files -n %{libname}
 %{_libdir}/libKF6KIOCore.so*
