@@ -167,6 +167,7 @@ Network transparent access to files and data
 %{_qtdir}/mkspecs/modules/qt_KIOGui.pri
 %{_qtdir}/mkspecs/modules/qt_KIOWidgets.pri
 %{_qtdir}/doc/KF6KIO.*
+%{_datadir}/kdevappwizard/templates/kioworker6.tar.bz2
 
 %files -n %{libname}
 %{_libdir}/libKF6KIOCore.so*
