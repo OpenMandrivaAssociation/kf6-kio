@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230527
+%define git 20230606
 
 Name: kf6-kio
 Version: 5.240.0
@@ -112,7 +112,6 @@ Network transparent access to files and data
 %{_bindir}/kcookiejar5
 %{_bindir}/ktelnetservice6
 %{_bindir}/ktrash6
-%{_qtdir}/plugins/kcm_trash.so
 %dir %{_qtdir}/plugins/kf6/kded
 %{_qtdir}/plugins/kf6/kded/kcookiejar.so
 %{_qtdir}/plugins/kf6/kded/proxyscout.so
@@ -135,15 +134,6 @@ Network transparent access to files and data
 %{_qtdir}/plugins/kf6/urifilters/kuriikwsfilter.so
 %{_qtdir}/plugins/kf6/urifilters/kurisearchfilter.so
 %{_qtdir}/plugins/kf6/urifilters/localdomainurifilter.so
-%dir %{_qtdir}/plugins/plasma
-%dir %{_qtdir}/plugins/plasma/kcms
-%dir %{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_cookies.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_smb.so
-%{_qtdir}/plugins/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
-%{_datadir}/applications/kcm_trash.desktop
 %{_datadir}/applications/ktelnetservice6.desktop
 %{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kiod5.service
