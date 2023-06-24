@@ -50,6 +50,8 @@ BuildRequires: pkgconfig(zlib)
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(libxslt)
 BuildRequires: pkgconfig(krb5)
+# Just to avoid pulling in the KF5 version
+BuildRequires: plasma6-xdg-desktop-portal-kde
 Requires: %{libname} = %{EVRD}
 
 %description
