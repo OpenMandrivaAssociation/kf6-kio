@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230715
+%define git 20230722
 
 Name: kf6-kio
 Version: 5.240.0
