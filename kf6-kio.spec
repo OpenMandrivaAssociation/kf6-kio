@@ -1,10 +1,10 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230811
+%define git 20230818
 
 Name: kf6-kio
 Version: 5.240.0
-Release: %{?git:0.%{git}.}2
+Release: %{?git:0.%{git}.}1
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
 Summary: Network transparent access to files and data
 URL: https://invent.kde.org/frameworks/kio
@@ -54,8 +54,8 @@ BuildRequires: pkgconfig(libxslt)
 BuildRequires: pkgconfig(krb5)
 # Just to avoid pulling in the KF5 version
 BuildRequires: plasma6-xdg-desktop-portal-kde
+Obsoletes: kcookiejar < %{EVRD}
 # Shared with KIO 5
-Requires: kcookiejar = %{EVRD}
 Requires: kio-dbus-services = %{EVRD}
 Requires: %{libname} = %{EVRD}
 
@@ -90,17 +90,10 @@ Development files (Headers etc.) for %{name}.
 
 Network transparent access to files and data
 
-# kcookiejar and kio-dbus-services are currently split out so they can be
+# kio-dbus-services are currently split out so they can be
 # shared with Plasma 5.
 # Once we drop Plasma 5, they should probably be merged back into the
 # main package.
-%package -n kcookiejar
-Summary: Command line tool for interfacing with KIO's cookie handler
-Group: System/Libraries
-
-%description -n kcookiejar
-Command line tool for interfacing with KIO's cookie handler
-
 %package -n kio-dbus-services
 Summary: D-Bus services that are part of KIO
 Group: System/Libraries
@@ -130,11 +123,7 @@ D-Bus services that are part of KIO
 
 %find_lang %{name} --all-name --with-qt --with-html --with-man
 
-%files -n kcookiejar
-%{_bindir}/kcookiejar5
-
 %files -n kio-dbus-services
-%{_datadir}/dbus-1/services/org.kde.kcookiejar5.service
 %{_datadir}/dbus-1/services/org.kde.kiod5.service
 %{_datadir}/dbus-1/services/org.kde.kioexecd.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
@@ -148,7 +137,6 @@ D-Bus services that are part of KIO
 %{_bindir}/ktelnetservice6
 %{_bindir}/ktrash6
 %dir %{_qtdir}/plugins/kf6/kded
-%{_qtdir}/plugins/kf6/kded/kcookiejar.so
 %{_qtdir}/plugins/kf6/kded/proxyscout.so
 %{_qtdir}/plugins/kf6/kded/remotenotifier.so
 %dir %{_qtdir}/plugins/kf6/kio
@@ -171,9 +159,7 @@ D-Bus services that are part of KIO
 %{_qtdir}/plugins/kf6/urifilters/localdomainurifilter.so
 %{_datadir}/applications/ktelnetservice6.desktop
 %{_datadir}/kconf_update/filepicker.upd
-%{_datadir}/kf6/kcookiejar/domain_info
 %{_datadir}/knotifications6/proxyscout.notifyrc
-%{_mandir}/man8/kcookiejar5.8*
 
 %files -n %{devname}
 %{_includedir}/KF6/KIO
