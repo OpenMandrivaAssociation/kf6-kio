@@ -4,7 +4,7 @@
 
 Name: kf6-kio
 Version: 5.240.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
 Summary: Network transparent access to files and data
 URL: https://invent.kde.org/frameworks/kio
@@ -66,6 +66,7 @@ Network transparent access to files and data
 Summary: Network transparent access to files and data
 Group: System/Libraries
 Requires: %{name} = %{EVRD}
+Recommends: switcheroo-control
 
 %description -n %{libname}
 Network transparent access to files and data
