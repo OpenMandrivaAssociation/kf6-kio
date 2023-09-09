@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230901
+%define git 20230909
 
 Name: kf6-kio
 Version: 5.240.0
@@ -55,8 +55,6 @@ BuildRequires: pkgconfig(krb5)
 # Just to avoid pulling in the KF5 version
 BuildRequires: plasma6-xdg-desktop-portal-kde
 Obsoletes: kcookiejar < %{EVRD}
-# Shared with KIO 5
-Requires: kio-dbus-services = %{EVRD}
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -90,17 +88,6 @@ Development files (Headers etc.) for %{name}.
 
 Network transparent access to files and data
 
-# kio-dbus-services are currently split out so they can be
-# shared with Plasma 5.
-# Once we drop Plasma 5, they should probably be merged back into the
-# main package.
-%package -n kio-dbus-services
-Summary: D-Bus services that are part of KIO
-Group: System/Libraries
-
-%description -n kio-dbus-services
-D-Bus services that are part of KIO
-
 %prep
 %autosetup -p1 -n kio-%{?git:master}%{!?git:%{version}}
 # Disabling PCH on aarch64 is a workaround for an apparent clang 16.0.3 bug
@@ -122,12 +109,6 @@ D-Bus services that are part of KIO
 %ninja_install -C build
 
 %find_lang %{name} --all-name --with-qt --with-html --with-man
-
-%files -n kio-dbus-services
-%{_datadir}/dbus-1/services/org.kde.kiod5.service
-%{_datadir}/dbus-1/services/org.kde.kioexecd.service
-%{_datadir}/dbus-1/services/org.kde.kpasswdserver.service
-%{_datadir}/dbus-1/services/org.kde.kssld5.service
 
 %files -f %{name}.lang
 %{_datadir}/qlogging-categories6/kio.*
@@ -160,6 +141,11 @@ D-Bus services that are part of KIO
 %{_datadir}/applications/ktelnetservice6.desktop
 %{_datadir}/kconf_update/filepicker.upd
 %{_datadir}/knotifications6/proxyscout.notifyrc
+%{_datadir}/dbus-1/services/org.kde.kiod6.service
+%{_datadir}/dbus-1/services/org.kde.kioexecd6.service
+%{_datadir}/dbus-1/services/org.kde.kpasswdserver6.service
+%{_datadir}/dbus-1/services/org.kde.kssld6.service
+
 
 %files -n %{devname}
 %{_includedir}/KF6/KIO
@@ -181,7 +167,7 @@ D-Bus services that are part of KIO
 %{_libdir}/libKF6KIOGui.so*
 %{_libdir}/libKF6KIOWidgets.so*
 %{_libdir}/libexec/kf6/kio_http_cache_cleaner
-%{_libdir}/libexec/kf6/kiod5
+%{_libdir}/libexec/kf6/kiod6
 %{_libdir}/libexec/kf6/kioexec
 %{_libdir}/libexec/kf6/kioworker
 %{_libdir}/libexec/kf6/kpac_dhcp_helper
