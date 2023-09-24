@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230918
+%define git 20230924
 
 Name: kf6-kio
 Version: 5.240.0
@@ -166,6 +166,7 @@ Network transparent access to files and data
 %{_libdir}/libKF6KIOFileWidgets.so*
 %{_libdir}/libKF6KIOGui.so*
 %{_libdir}/libKF6KIOWidgets.so*
+%{_libdir}/libkuriikwsfiltereng_private.so
 %{_libdir}/libexec/kf6/kio_http_cache_cleaner
 %{_libdir}/libexec/kf6/kiod6
 %{_libdir}/libexec/kf6/kioexec
