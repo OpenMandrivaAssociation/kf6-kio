@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20230927
+%define git 20231005
 
 Name: kf6-kio
 Version: 5.240.0
@@ -154,10 +154,6 @@ Network transparent access to files and data
 %{_includedir}/KF6/KIOGui
 %{_includedir}/KF6/KIOWidgets
 %{_libdir}/cmake/KF6KIO
-%{_qtdir}/mkspecs/modules/qt_KIOCore.pri
-%{_qtdir}/mkspecs/modules/qt_KIOFileWidgets.pri
-%{_qtdir}/mkspecs/modules/qt_KIOGui.pri
-%{_qtdir}/mkspecs/modules/qt_KIOWidgets.pri
 %{_qtdir}/doc/KF6KIO.*
 %{_datadir}/kdevappwizard/templates/kioworker6.tar.bz2
 
