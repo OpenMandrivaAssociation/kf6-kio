@@ -1,6 +1,6 @@
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20231022
+%define git 20231103
 
 Name: kf6-kio
 Version: 5.240.0
@@ -114,7 +114,6 @@ Network transparent access to files and data
 %{_datadir}/qlogging-categories6/kio.*
 %{_datadir}/kf6/searchproviders
 %{_sysconfdir}/xdg/accept-languages.codes
-%{_sysconfdir}/xdg/kshorturifilterrc
 %{_bindir}/ktelnetservice6
 %{_bindir}/ktrash6
 %dir %{_qtdir}/plugins/kf6/kded
