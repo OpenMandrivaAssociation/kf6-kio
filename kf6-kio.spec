@@ -1,11 +1,17 @@
+%define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
+
 %define libname %mklibname KF6KIO
 %define devname %mklibname KF6KIO -d
-%define git 20231103
+#define git 20231103
 
 Name: kf6-kio
-Version: 5.240.0
+Version: 5.245.0
 Release: %{?git:0.%{git}.}1
+%if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
+%else
+Source0: https://download.kde.org/%{stable}/frameworks/%{version}/kio-%{version}.tar.xz
+%endif
 Summary: Network transparent access to files and data
 URL: https://invent.kde.org/frameworks/kio
 License: CC0-1.0 LGPL-2.0+ LGPL-2.1 LGPL-3.0
@@ -113,11 +119,9 @@ Network transparent access to files and data
 %files -f %{name}.lang
 %{_datadir}/qlogging-categories6/kio.*
 %{_datadir}/kf6/searchproviders
-%{_sysconfdir}/xdg/accept-languages.codes
 %{_bindir}/ktelnetservice6
 %{_bindir}/ktrash6
 %dir %{_qtdir}/plugins/kf6/kded
-%{_qtdir}/plugins/kf6/kded/proxyscout.so
 %{_qtdir}/plugins/kf6/kded/remotenotifier.so
 %dir %{_qtdir}/plugins/kf6/kio
 %{_qtdir}/plugins/kf6/kio/kio_file.so
@@ -138,7 +142,6 @@ Network transparent access to files and data
 %{_qtdir}/plugins/kf6/urifilters/kurisearchfilter.so
 %{_qtdir}/plugins/kf6/urifilters/localdomainurifilter.so
 %{_datadir}/applications/ktelnetservice6.desktop
-%{_datadir}/knotifications6/proxyscout.notifyrc
 %{_datadir}/dbus-1/services/org.kde.kiod6.service
 %{_datadir}/dbus-1/services/org.kde.kioexecd6.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver6.service
@@ -161,11 +164,9 @@ Network transparent access to files and data
 %{_libdir}/libKF6KIOGui.so*
 %{_libdir}/libKF6KIOWidgets.so*
 %{_libdir}/libkuriikwsfiltereng_private.so
-%{_libdir}/libexec/kf6/kio_http_cache_cleaner
 %{_libdir}/libexec/kf6/kiod6
 %{_libdir}/libexec/kf6/kioexec
 %{_libdir}/libexec/kf6/kioworker
-%{_libdir}/libexec/kf6/kpac_dhcp_helper
 
 %files -n %{libname}-designer
 %{_qtdir}/plugins/designer/kio6widgets.so
