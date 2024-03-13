@@ -1,0 +1,66 @@
+From 7a585d2f8715a76bbd50998c259985e5937720eb Mon Sep 17 00:00:00 2001
+From: Jonathan Marten <jjm@keelhaul.me.uk>
+Date: Wed, 28 Feb 2024 19:23:34 +0000
+Subject: [PATCH] kioexec: Remove temporary files after the main loop has
+ completed
+
+It is possible to launch kioexec with multiple file or URL arguments,
+if the receiving application accepts them.  If these are temporary files
+(indicated by the '--tempfiles' option), they were deleted one after the
+other in slotRunApp() loop with a 180 second pause between each one.
+This means that the process remained active for a very long time.
+
+Just accumulate the names of temporary files to be deleted inside the
+loop, and then sleep for that time just once.  Remove all of the files
+together after the sleep is complete.
+---
+ src/kioexec/main.cpp | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
+
+diff --git a/src/kioexec/main.cpp b/src/kioexec/main.cpp
+index 94cacc503e..8a4a316d7d 100644
+--- a/src/kioexec/main.cpp
++++ b/src/kioexec/main.cpp
+@@ -223,6 +223,8 @@ void KIOExec::slotRunApp()
+ 
+     qDebug() << "EXEC done";
+ 
++    QStringList tempFilesToRemove;
++
+     // Test whether one of the files changed
+     for (it = fileList.begin(); it != fileList.end(); ++it) {
+         QString src = it->path;
+@@ -260,13 +262,24 @@ void KIOExec::slotRunApp()
+         }
+ 
+         if ((uploadChanges || mTempFiles) && exit_code == 0) {
+-            // Wait for a reasonable time so that even if the application forks on startup (like OOo or amarok)
+-            // it will have time to start up and read the file before it gets deleted. #130709.
+-            const int sleepSecs = 180;
+-            qDebug() << "sleeping for" << sleepSecs << "seconds before deleting file...";
+-            QThread::sleep(sleepSecs);
++            // Note that a temp file needs to be removed later
++            tempFilesToRemove.append(src);
++        }
++    }
++
++    if (!tempFilesToRemove.isEmpty()) {
++        // Wait for a reasonable time so that even if the application forks
++        // on startup (like OOo or amarok) it will have time to start up and
++        // read the file before it gets deleted. #130709.
++        const int sleepSecs = 180;
++        qDebug() << "sleeping for" << sleepSecs << "seconds before deleting" << tempFilesToRemove.count() << "temp files...";
++        QThread::sleep(sleepSecs);
++        qDebug() << sleepSecs << "seconds have passed, deleting temp files";
++
++        for (const QString &src : qAsConst(tempFilesToRemove)) {
++            QFileInfo info(src);
+             const QString parentDir = info.path();
+-            qDebug() << sleepSecs << "seconds have passed, deleting" << info.filePath();
++            qDebug() << "deleting" << info.filePath();
+             QFile(src).remove();
+             // NOTE: this is not necessarily a temporary directory.
+             if (QDir().rmdir(parentDir)) {
+-- 
+GitLab
+
