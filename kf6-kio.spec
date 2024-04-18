@@ -7,12 +7,13 @@
 
 Name: kf6-kio
 Version: 6.1.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
 %else
 Source0: https://download.kde.org/%{stable}/frameworks/%{major}/kio-%{version}.tar.xz
 %endif
+Patch0: https://invent.kde.org/frameworks/kio/-/commit/341a75c7e42ea8bcea07d0a0c0044a5a4f342e07.patch
 Summary: Network transparent access to files and data
 URL: https://invent.kde.org/frameworks/kio
 License: CC0-1.0 LGPL-2.0+ LGPL-2.1 LGPL-3.0
