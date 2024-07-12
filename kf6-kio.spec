@@ -6,7 +6,7 @@
 #define git 20240217
 
 Name: kf6-kio
-Version: 6.3.0
+Version: 6.4.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
@@ -148,7 +148,7 @@ Network transparent access to files and data
 %{_datadir}/dbus-1/services/org.kde.kioexecd6.service
 %{_datadir}/dbus-1/services/org.kde.kpasswdserver6.service
 %{_datadir}/dbus-1/services/org.kde.kssld6.service
-
+%{_datadir}/applications/org.kde.kiod6.desktop
 
 %files -n %{devname}
 %{_includedir}/KF6/KIO
