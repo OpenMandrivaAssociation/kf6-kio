@@ -6,7 +6,7 @@
 #define git 20240217
 
 Name: kf6-kio
-Version: 6.10.0
+Version: 6.11.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
@@ -171,6 +171,7 @@ Network transparent access to files and data
 %{_libdir}/libexec/kf6/kiod6
 %{_libdir}/libexec/kf6/kioexec
 %{_libdir}/libexec/kf6/kioworker
+%{_qtdir}/plugins/kf6/kio_dnd/dropintonewfolder.so
 
 %files -n %{libname}-designer
 %{_qtdir}/plugins/designer/kio6widgets.so
