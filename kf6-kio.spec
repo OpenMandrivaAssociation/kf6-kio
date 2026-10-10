@@ -6,8 +6,8 @@
 #define git 20240217
 
 Name: kf6-kio
-Version: 6.30.0
-Release: %{?git:0.%{git}.}2
+Version: 6.31.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kio/-/archive/master/kio-master.tar.bz2#/kio-%{git}.tar.bz2
 %else
@@ -127,6 +127,7 @@ Network transparent access to files and data
 %{_bindir}/ktrash6
 %dir %{_qtdir}/plugins/kf6/kded
 %{_qtdir}/plugins/kf6/kded/remotenotifier.so
+%{_qtdir}/plugins/kf6/kded/trashdirnotify.so
 %dir %{_qtdir}/plugins/kf6/kio
 %{_qtdir}/plugins/kf6/kio/kio_file.so
 %{_qtdir}/plugins/kf6/kio/kio_ftp.so
